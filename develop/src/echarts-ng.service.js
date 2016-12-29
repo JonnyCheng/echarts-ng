@@ -181,12 +181,18 @@
         decorativeConfig = $waterfall.adaptWaterfallSeries(config);
 
         if (angular.isObject(decorativeConfig) && angular.isArray(decorativeConfig.series) && decorativeConfig.series.length) {
+          instance.clear();
           instance.hideLoading();
           instance.resize();
           instance.setOption(decorativeConfig);
-        } else {
-          //instance.clear();
-          instance.showLoading("default", {maskColor: "rgba(255, 255, 255, 1)"});
+        } else if(angular.isObject(decorativeConfig) && angular.isArray(decorativeConfig.series) && decorativeConfig.series.length == 0){
+          instance.clear();
+          instance.hideLoading();
+          instance.resize();
+          instance.setOption(decorativeConfig);
+        } else if(isShowLoading) {
+          instance.clear();
+          showLoading(instance);
         }
       }
 
