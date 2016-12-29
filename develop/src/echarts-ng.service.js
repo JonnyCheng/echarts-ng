@@ -180,12 +180,7 @@
         $dimension.shouldAdjustEchartsDimension(config.dynamic, config.series) && $dimension.adjustEchartsDimension(instance.getDom(), config.series);
         decorativeConfig = $waterfall.adaptWaterfallSeries(config);
 
-        if (angular.isObject(decorativeConfig) && angular.isArray(decorativeConfig.series) && decorativeConfig.series.length) {
-          instance.clear();
-          instance.hideLoading();
-          instance.resize();
-          instance.setOption(decorativeConfig);
-        } else if(angular.isObject(decorativeConfig) && angular.isArray(decorativeConfig.series) && decorativeConfig.series.length == 0){
+        if (angular.isObject(decorativeConfig) && angular.isArray(decorativeConfig.series) && decorativeConfig.series.length >= 0) {
           instance.clear();
           instance.hideLoading();
           instance.resize();
